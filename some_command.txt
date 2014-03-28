@@ -1,0 +1,8 @@
+*****************************
+Java Notes
+*****************************
+javac - a command line compiler (te same for all OS)
+java - a command line runtime
+jar - the packager
+javadoc - the documentation builder
+
