@@ -1,4 +1,4 @@
-﻿<%@ Page Language="VB" Inherits="Default" MasterPageFile="~/Master.master" Title="Home" CodeFile="~/Default.aspx.vb"%>
+﻿<%@ Page Language="VB" Inherits="Default" MasterPageFile="~/Master.master" Title="Home" CodeFile="Default.aspx.vb"%>
 <asp:Content id="contentHome" ContentPlaceHolderID="Main" runat="server">
 	<div class="body">
 		<h4>Select a time slot to create a meeting</h4>
