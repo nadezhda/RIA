@@ -3,8 +3,8 @@
 <html>
 <head runat="server">
 	<title>Master</title>
-	<link rel="stylesheet" href="\bootstrap\css\bootstrap.css"/>
-	<link rel="stylesheet" href="\bootstrap\css\OurStyle.css"/>
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.css"/>
+	<link rel="stylesheet" href="bootstrap/css/OurStyle.css"/>
 </head>
 <body>
 <div id="container" class="container-fluid">

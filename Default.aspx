@@ -2,8 +2,8 @@
 <asp:Content id="contentHome" ContentPlaceHolderID="Main" runat="server">
 	<div class="body">
 		<h4>Select a time slot to create a meeting</h4>
-		<div class="table-responsive">
-		<table class="table table-bordered">
+		<div class="table-responsive col-md-10 col-md-offset-1">
+            <table id="schedule" class="table">
 		   <tr>
 		    <th></th>
 		    <th>7-8</th>
@@ -24,8 +24,9 @@
 		    <th>22-23</th>
 		    <th>23-24</th>
 		  </tr>
-		  <tr>
-		    <td class="">Monday</td>
+		
+		  <tr id="mon">
+		    <td class="day">Monday</td>
 		    <td class="unavailable" id="mon-7"></td>
 		    <td class="unavailable" id="mon-8"></td>
 		    <td class="available" id="mon-9"></td>
@@ -45,7 +46,7 @@
 		    <td class="available" id="mon-23"></td>
 		  </tr>
 		  <tr>
-		    <td class="">Tuesday</td>
+		    <td class="day">Tuesday</td>
 		   <td class="unavailable" id="tues-7"></td>
 		    <td class="unavailable" id="tues-8"></td>
 		    <td class="unavailable" id="tues-9"></td>
@@ -65,7 +66,7 @@
 		    <td class="available" id="tues-23"></td>
 		  </tr>
 		  <tr>
-		    <td class="">Wednesday</td>
+		    <td class="day">Wednesday</td>
 		 	<td class="unavailable" id="wed-7"></td>
 		    <td class="unavailable" id="wed-8"></td>
 		    <td class="unavailable" id="wed-9"></td>
@@ -85,7 +86,7 @@
 		    <td class="available" id="wed-23"></td>
 		  </tr>
 		  <tr>
-		    <td class="">Thursday</td>
+		    <td class="day">Thursday</td>
 		    <td class="unavailable" id="thur-7"></td>
 		    <td class="unavailable" id="thur-8"></td>
 		    <td class="unavailable" id="thur-9"></td>
@@ -105,7 +106,7 @@
 		    <td class="unavailable" id="thur-23"></td>
 		  </tr>
 		  <tr>
-		    <td class="">Friday</td>
+		    <td class="day">Friday</td>
 		   <td class="unavailable" id="fri-7"></td>
 		    <td class="unavailable" id="fri-8"></td>
 		    <td class="unavailable" id="fri-9"></td>
@@ -125,7 +126,7 @@
 		    <td class="unavailable" id="fri-23"></td>
 		  </tr>
 		  <tr>
-		    <td class="">Saturday</td>
+		    <td class="day">Saturday</td>
 			<td class="available" id="sat-7"></td>
 		    <td class="available" id="sat-8"></td>
 		    <td class="available" id="sat-9"></td>
@@ -145,7 +146,7 @@
 		    <td class="available" id="sat-23"></td>
 		  </tr>
 		  <tr>
-		    <td class="">Sunday</td>
+		    <td class="day">Sunday</td>
 		 	 <td class="available" id="sun-7"></td>
 		    <td class="available" id="sun-8"></td>
 		    <td class="available" id="sun-9"></td>
