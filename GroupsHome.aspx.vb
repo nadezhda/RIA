@@ -1,15 +1,6 @@
 ﻿
-
-Imports System
-Imports System.Web
-Imports System.Web.UI
-
-
-Partial Public Class [Default]
-	Inherits System.Web.UI.Page
-
-
-
+Partial Class GroupsHome
+    Inherits System.Web.UI.Page
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
 
         'check if user logged in or not. Role must be either Admin or Member 
@@ -20,5 +11,6 @@ Partial Public Class [Default]
 
         End If
     End Sub
-End Class
 
+    
+End Class
