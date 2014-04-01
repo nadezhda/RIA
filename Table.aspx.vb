@@ -5,8 +5,8 @@ Imports System.Web
 Imports System.Web.UI
 
 
-Partial Public Class [Default]
-	Inherits System.Web.UI.Page
+Partial Public Class [Table]
+    Inherits System.Web.UI.Page
 
 
 

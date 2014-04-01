@@ -1,68 +1,100 @@
 ﻿.body {
-padding-top: 70px;
-
+    padding-top: 70px;
 }
 
 #schedule th {
-text-align: center;
+    text-align: center;
 }
 
 .available {
-background-color:#2DCC70;
-opacity:0.7;
-border-radius:6px;
-width: 10em;
+    background-color: #2DCC70;
+    opacity: 0.7;
+    border-radius: 6px;
+    width: 10em;
 }
 
 .unavailable {
-background-color:#D1D0C8;
-opacity:0.5;
-width: 10em;
+    background-color: #D1D0C8;
+    opacity: 0.5;
+    width: 10em;
 }
 
-.selected{
-background-color:#E1AF41;
-border-radius:6px;
-width: 10em;
--moz-box-shadow: 4px 4px 5px #888;
--webkit-box-shadow: 4px 4px 5px #888;
-box-shadow: 4px 4px 5px #888;
+.selected {
+    background-color: #E1AF41;
+    border-radius: 6px;
+    width: 10em;
+    -moz-box-shadow: 4px 4px 5px #888;
+    -webkit-box-shadow: 4px 4px 5px #888;
+    box-shadow: 4px 4px 5px #888;
 }
 
 td {
-    padding:5em 5em 5em 5em;
-   
+    padding: 5em 5em 5em 5em;
 }
 
 
 #schedule {
-    border-collapse:initial;
-    border-spacing:0.5em;
+    border-collapse: initial;
+    border-spacing: 0.5em;
 }
 
 .day {
-    border-right:1px solid #3A4447;
-    border-spacing:0em;
+    border-right: 1px solid #3A4447;
+    border-spacing: 0em;
 }
 
 #mon {
-      padding:5em 0 5em 5em;
+    padding: 5em 0 5em 5em;
 }
+
 .table > tbody > tr > td {
-    border-top:none;
+    border-top: none;
 }
+
 .table > tbody > tr > th {
-    border-top:none;
+    border-top: none;
 }
 
- th {
-     border-bottom:1px solid #3A4447;
-     border-spacing:0em;
-     border-top:none;
+th {
+    border-bottom: 1px solid #3A4447;
+    border-spacing: 0em;
+    border-top: none;
 }
 
-.stupidtable{
-   border-spacing :0.5em;
-       border-collapse:separate;
+.vertical-middle {
+    vertical-align: middle;
+}
 
+.btn-warning {
+    color: #3A4447;
+}
+
+.darkwell {
+    background-color: #3A4446;
+    color: #EBE8E3;
+}
+
+.btn-dark {
+    background-color: #3A4446;
+    color: #EBE8E3;
+}
+
+.meeting-confirm {
+    background-color: #E1AF41;
+    color: #3A4447;
+    width: inherit;
+    margin-bottom: 14px;
+    -webkit-box-shadow: 4px 4px 5px 0px #EBE8E3;
+    -moz-box-shadow: 4px 4px 5px 0px #EBE8E3;
+    box-shadow: 4px 4px 5px 0px #EBE8E3;
+}
+
+.meeting-conflict {
+    background-color: #F04B42;
+    color: #3A4447;
+    width: inherit;
+    margin-bottom: 14px;
+    -webkit-box-shadow: 4px 4px 5px 0px #EBE8E3;
+    -moz-box-shadow: 4px 4px 5px 0px #EBE8E3;
+    box-shadow: 4px 4px 5px 0px #EBE8E3;
 }

@@ -1,15 +1,60 @@
 ﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Master.master" AutoEventWireup="false" CodeFile="GroupsHome.aspx.vb" Inherits="GroupsHome" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="Main" Runat="Server">
-    <br />
-    <br />
-    <br />
-  <br />
-    <br />
-    <br />
+<asp:Content ID="Content1" ContentPlaceHolderID="Main" runat="Server">
+
+    <div class="container-fluid body">
+        <div class="col-md-6">
+            <div class="row col-md-offset-1">
+
+                <h3>Group Name : </h3>
+                <asp:Button ID="cmdCreateGroup" runat="server" Text="Add New Group" class="btn btn-lg pull-right btn-dark" />
+
+            </div>
+            <div class="row col-md-offset-1">
+                <div class="well darkwell">
+                    <h4>Social Networks : </h4>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="btn meeting-confirm btn-lg">
+                                <label class="pull-left">Wednesday 11:00 AM </label>
+                                <label class="pull-right">Confirmed</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="btn meeting-conflict btn-lg">
+                                <label class="pull-left">Friday 15:00 PM </label>
+                                <label class="pull-right">Conflict </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-3 pull-right">
+            ghjgh
+            
+        </div>
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
-      <div id="main">
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+    <div id="main">
         <input type="button" id="btAdd" value="Add Element" class="bt" />
         <input type="button" id="btRemove" value="Remove Element" class="bt" />
         <input type="button" id="btRemoveAll" value="Remove All" class="bt" /><br />
@@ -74,7 +119,7 @@
             $(divValue).append('<p><b>Your selected values</b></p>' + values);
             $('body').append(divValue);
         }
-</script>
+    </script>
 
-    </asp:Content>
+</asp:Content>
 

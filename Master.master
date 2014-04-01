@@ -23,7 +23,7 @@
 	        </div>
 	    		<div class="collapse navbar-collapse">
 		          <ul class="nav navbar-nav">
-		            <li id="homenav"><a href="Default.aspx">Home</a></li>
+		            <li id="homenav"><a href="GroupsHome.aspx">Home</a></li>
 		            <li id="aboutnav"><a href="about.aspx">About</a></li>
 		          </ul>
 	        	</div>
