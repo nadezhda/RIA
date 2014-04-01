@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿Imports System.Data.SqlClient
 Imports System.Web.Security
 
@@ -63,4 +64,10 @@ Partial Class Login
         End If
 
     End Sub
+=======
+﻿
+Partial Class Login
+    Inherits System.Web.UI.Page
+
+>>>>>>> FETCH_HEAD
 End Class
