@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-﻿<%@ Page Language="VB" MasterPageFile="~/Master.master"  AutoEventWireup="false" CodeFile="Login.aspx.vb" Inherits="Login" %>
+<%@ Page Language="VB" Inherits="Login" MasterPageFile="~/Master.master" Title="Login" CodeFile="Login.aspx.vb"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Main" Runat="Server">
 
@@ -29,10 +28,3 @@
     </form>
 
 </asp:Content>
-=======
-﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="~/Login.aspx.vb" Inherits="Login" MasterPageFile="~/Master.master" Title="Login"%>
-
-<asp:Content id="contentLogin" ContentPlaceHolderID="Main" runat="server">
-
-</asp:Content>
->>>>>>> FETCH_HEAD
