@@ -1,37 +1,38 @@
-﻿<%@ Master Language="VB" Inherits="Master" AutoEventWireup="true" CodeFile="Master.master.vb"%>
+﻿<%@ Master Language="VB" Inherits="Master" AutoEventWireup="true" CodeFile="Master.master.vb" %>
+
 <!DOCTYPE html>
 <html>
 <head runat="server">
-	<title>Master</title>
-	<link rel="stylesheet" href="bootstrap/css/bootstrap.css"/>
-	<link rel="stylesheet" href="bootstrap/css/OurStyle.css"/>
+    <link rel="stylesheet" href="bootstrap/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="bootstrap/OurStyle.css" />
     <link href="font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
 </head>
 <body>
-<div id="container" class="container-fluid">
-	<form runat="server">
-		<div id="statment">
-		</div>
-		<div class="navbar navbar-inverse navbar-fixed-top">
-	      <div class="container">
-	        <div class="navbar-header">
-	          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-	            <span class="icon-bar " ></span>
-	            <span class="icon-bar"></span>
-	            <span class="icon-bar"></span>
-	          </button>
-	          <a class="navbar-brand">Meeting Finder</a>
-	        </div>
-	    		<div class="collapse navbar-collapse">
-		          <ul class="nav navbar-nav">
-		            <li id="homenav"><a href="GroupsHome.aspx">My Groups</a></li>
-		            <li id="aboutnav"><a href="about.aspx">About</a></li>
-		          </ul>
-	        	</div>
-		     </div>
-	   		</div>
-	    <asp:ContentPlaceHolder id="Main" runat="server" /> 
-	</form>
-</div>
+    <div id="container" class="container-fluid">
+        <form runat="server">
+            <%--<div id="statment">
+		</div>--%>
+            <div class="navbar navbar-fixed-top">
+                <div class="navbar-inner">
+                    <div class="container">
+                        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar "></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="brand">Meeting Finder</a>
+                        <div class="collapse nav-collapse">
+                            <ul class="nav">
+                                <li id="homenav"><a href="GroupsHome.aspx">My Groups</a></li>
+                                <li id="aboutnav"><a href="about.aspx">About</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <asp:ContentPlaceHolder ID="Main" runat="server" />
+        </form>
+    </div>
 </body>
 </html>

@@ -1,4 +1,7 @@
-﻿.body {
+﻿html {
+    font-family: 'Open Sans', sans-serif;
+}
+.body {
     padding-top: 70px;
 }
 
@@ -93,17 +96,47 @@ th {
     box-shadow: 4px 4px 5px 0px #EBE8E3;
 }
 
-.txtUsername {
-    margin-bottom:10px;
-}
 
 .well > h3 {
     margin-top: 2px;
 }
-.middle {
-    vertical-align:middle;
-    margin:auto;
-}
+
 .red {
    color:#f14b42;
+}
+.middle {
+  transform: translate(0%, 90%) !important;
+  -ms-transform: translate(0%, 100%) !important; /* IE 9 */
+  -webkit-transform: translate(0%, 90%) !important; /* Safari and Chrome */
+}
+
+.navbar-inner{
+  background: #63AFD0;
+}
+
+.navbar .brand{
+  color: #fff;
+  text-shadow: none;
+}
+
+.navbar .nav > li > a{
+  color: #fff;
+  text-shadow: none;
+}
+
+.navbar .nav > li.active,
+.navbar .nav > li > a:hover,
+.navbar .nav > li > a:focus{
+  color: black;
+  background: #9FDFCA;
+  text-shadow: none;
+}
+.padd {
+    padding-left:20px;
+}
+.paddbutton {
+    padding-left:45px;
+}
+margbutton {
+    margin-left:50px;
 }
