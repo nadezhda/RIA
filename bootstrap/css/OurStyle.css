@@ -61,10 +61,6 @@ th {
     border-top: none;
 }
 
-.vertical-middle {
-    vertical-align: middle;
-}
-
 .btn-warning {
     color: #3A4447;
 }
@@ -80,7 +76,6 @@ th {
 }
 
 .meeting-confirm {
-    background-color: #E1AF41;
     color: #3A4447;
     width: inherit;
     margin-bottom: 14px;
@@ -90,11 +85,25 @@ th {
 }
 
 .meeting-conflict {
-    background-color: #F04B42;
     color: #3A4447;
     width: inherit;
     margin-bottom: 14px;
     -webkit-box-shadow: 4px 4px 5px 0px #EBE8E3;
     -moz-box-shadow: 4px 4px 5px 0px #EBE8E3;
     box-shadow: 4px 4px 5px 0px #EBE8E3;
+}
+
+.txtUsername {
+    margin-bottom:10px;
+}
+
+.well > h3 {
+    margin-top: 2px;
+}
+.middle {
+    vertical-align:middle;
+    margin:auto;
+}
+.red {
+   color:#f14b42;
 }
