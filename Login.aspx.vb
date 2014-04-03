@@ -19,7 +19,7 @@ Partial Class Login
 
             'Return the first row, since username is primary key
             findPassword = cmd.ExecuteScalar()
-
+            conn.Close()
 
         Catch ex As Exception
             MsgBox(ex.ToString)
