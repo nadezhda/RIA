@@ -40,9 +40,9 @@ Partial Class Login
 
     Protected Sub cmdLogin_Click(sender As Object, e As EventArgs) Handles cmdLogin.Click
         'Get users input username
-        Dim UserName As String = txtUsername.Text.ToString
+        Dim UserName As String = txtUsername.Value.ToString
         'Get users input password
-        Dim Password As String = txtPassword.Text.ToString
+        Dim Password As String = txtPassword.Value.ToString
         'call the function to check the user credentials
         Dim checkUser As Boolean = UserValidation(UserName, Password)
 

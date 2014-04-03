@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Master.master" AutoEventWireup="false" CodeFile="GroupsHome.aspx.vb" Inherits="GroupsHome" %>
 
 
+<<<<<<< HEAD
 <asp:Content ID="Content1" ContentPlaceHolderID="Main" runat="Server">
     <div class="container-fluid body"> 
         <div class="col-md-6">
@@ -8,35 +9,44 @@
 
                 <h3>Group Name : </h3>
                 <asp:Button ID="cmdCreateNewGroup" runat="server" Text="Add New Group" class="btn btn-lg pull-right btn-dark" />
+=======
+    <div class="container-fluid body">
+        <div class="span6">
+            <div class="row-fluid">
+
+                <button id="cmdCreateGroup" runat="server" class="btn btn-info pull-left ">
+                    Add New Group  <i class="fa fa-plus-circle fa-lg"></i>
+                </button>
+>>>>>>> FETCH_HEAD
 
             </div>
-            <div class="row col-md-offset-1">
-                <div class="well darkwell">
-                    <h4>Social Networks : </h4>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="btn meeting-confirm btn-lg">
+            <div class="row-fluid">
+                <div class="well span12">
+                    <h4><i class="fa fa-users fa-lg"></i>Social Networks </h4>
+                    <div class="row-fluid">
+                        <div class="">
+                            <div class="btn meeting-confirm btn-success btn-large span11">
                                 <label class="pull-left">Wednesday 11:00 AM </label>
-                                <label class="pull-right">Confirmed</label>
+                                <label class="pull-right">Confirmed<i class="fa fa-check-circle fa-lg"></i></label>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="btn meeting-conflict btn-lg">
-                                <label class="pull-left">Friday 15:00 PM </label>
-                                <label class="pull-right">Conflict </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
+                    <div class="row-fluid">
+                        <div class="">
+                            <div class="btn meeting-conflict btn-danger btn-large span11">
+                                <label class="pull-left">Friday 15:00 PM </label>
+                                <label class="pull-right">Conflict <i class="fa fa-exclamation-circle fa-lg"></i></label>
+                            </div>
+                        </div>
+                    </div>
             </div>
         </div>
-        <div class="col-md-3 pull-right">
-            ghjgh
+    </div>
+    <div class="span3 pull-right">
+        ghjgh
             
-        </div>
+    </div>
 
 
 
