@@ -140,3 +140,11 @@ th {
 margbutton {
     margin-left:50px;
 }
+
+.modal-body-big {
+    max-height:300px;
+    height:300px;
+}
+.topmarg {
+   margin-top: -18px;
+}

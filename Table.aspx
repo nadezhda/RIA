@@ -2,7 +2,7 @@
 <asp:Content id="contentHome" ContentPlaceHolderID="Main" runat="server">
 	<div class="body">
 		<h4>Select a time slot to create a meeting</h4>
-		<div class="table-responsive col-md-10 col-md-offset-1">
+		<div class="table-responsive span10 offset1">
             <table id="schedule" class="table">
 		   <tr>
 		    <th></th>
