@@ -148,3 +148,6 @@ margbutton {
 .topmarg {
    margin-top: -18px;
 }
+.filter {
+    border-bottom: 1px solid #EEE;
+}

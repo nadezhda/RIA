@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Master.master" AutoEventWireup="false" CodeFile="GroupsHome.aspx.vb" Inherits="GroupsHome" %>
+﻿<%@ Page Title="Groups" Language="VB" MasterPageFile="~/Master.master" AutoEventWireup="false" CodeFile="GroupsHome.aspx.vb" Inherits="GroupsHome" %>
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Main" runat="Server">
@@ -7,7 +7,7 @@
         <div class="span7">
             <div class="row-fluid">
 
-                <button id="cmdCreateNewGroup" runat="server" data-toggle="modal" data-target="#createGroupModal" class="btn btn-info pull-left  " style="margin-bottom: 20px;">
+                <button id="cmdCreateNewGroup" runat="server" data-toggle="modal" data-target="#createGroupModal" class="btn btn-info pull-left" style="margin-bottom: 20px;">
                     Add New Group <i class="fa fa-plus-circle fa-lg"></i>
                 </button>
 
@@ -46,12 +46,8 @@
         <div class="span5"></div>
         <div class="span3">
             <h3>Groups Feed</h3>
-
         </div>
     </div>
-
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
 
     <div id="createGroupModal" class="modal hide fade" tabindex="-1">
         <%--<asp:Panel ID="groupPanel" runat="server">--%>
@@ -79,8 +75,12 @@
             </form>
         </div>
 
-        <div class="modal-footer">
-
+        <div class="modal-footer" style="padding-top:30px;">
+            
+            <label class="checkbox pull-left" style="margin-top:-20px;" >
+                <input type="checkbox" />  I Agree on <a href="#">terms and conditions.</a>
+            </label>
+                
             <asp:Button ID="cmdCreateGroup" CssClass="btn btn-success" runat="server" Text="Create Group" />
             <button id="cancel" data-dismiss="modal" class="btn ">Close</button>
 
@@ -96,7 +96,7 @@
         <div class="modal-body">
             <form class="form-horizontal">
                 <div class="control-group">
-                    <asp:Label ID="Label3" runat="server" CssClass="control-label" Text="Group Name : "></asp:Label>
+                    <asp:Label ID="Label3" runat="server" CssClass="control-label" Text="Edit Group Name : "></asp:Label>
                     <div class="controls">
                         <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
                     </div>
