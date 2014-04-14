@@ -2,17 +2,19 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Main" runat="Server">
+                                <asp:ScriptManager ID="ScriptManager1" runat="server">
+            </asp:ScriptManager>
 
     <div class="container-fluid body">
         <div class="span7">
-            <div class="row-fluid">
+           <div class="row-fluid">
 
                 <button id="cmdCreateNewGroup" runat="server" data-toggle="modal" data-target="#createGroupModal" class="btn btn-info pull-left" style="margin-bottom: 20px;">
                     Add New Group <i class="fa fa-plus-circle fa-lg"></i>
                 </button>
 
-            </div>
-            <div class="row-fluid">
+            </div> 
+    <!--         <div class="row-fluid">
                 <div class="well span12">
                     <div class="row-fluid">
                         <div class="span9">
@@ -41,8 +43,58 @@
                         </div>
                     </div>
                 </div>
+            </div>-->
+            <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Always"><ContentTemplate>
+        <asp:GridView ID="GridView1" ShowHeader="false" BorderStyle="None"  runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" Width="100%" BorderWidth="0px" AlternatingRowStyle-BorderStyle="None" EditRowStyle-BorderStyle="None" EmptyDataRowStyle-BorderStyle="None" GridLines="None">
+            <Columns>
+                <asp:TemplateField HeaderText="GroupName" SortExpression="GroupName">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("GroupName") %>'></asp:TextBox>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                                    <div class="row-fluid">
+                <div class="well span12">
+                    <div class="row-fluid">
+                        <div class="span9">
+                            <h4><asp:Label ID="Label1" runat="server" Text='<%# Bind("GroupName") %>'></asp:Label>
+</h4>
+                        </div>
+                        <div class="span3" style="margin-top: -18px">
+                            <a id="btnSettings" class="btn pull-right btn-primary" data-toggle="modal" rel="tooltip" data-target="#groupSettingModal" data-original-title="Group Settings"><i class="fa fa-cogs fa-lg"></i></a>
+                            <a id="btnAddMeeting" href="Table.aspx" class="btn pull-right btn-warning" data-toggle="tooltip" data-original-title="Add Meeting"><i class="fa fa-calendar fa-lg"></i></a>
+                        </div>
+                    </div>
+                    <div class="row-fluid">
+                        <div class="">
+                            <div class="btn meeting-confirm btn-success btn-large span11">
+                                <label class="pull-left">Wednesday 11:00 AM </label>
+                                <label class="pull-right">Confirmed<i class="fa fa-check-circle fa-lg"></i></label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row-fluid">
+                        <div class="">
+                            <div class="btn meeting-conflict btn-danger btn-large span11">
+                                <label class="pull-left">Friday 15:00 PM </label>
+                                <label class="pull-right">Conflict <i class="fa fa-exclamation-circle fa-lg"></i></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+
+                    </ItemTemplate>
+                </asp:TemplateField>
+            </Columns>
+            <EditRowStyle BorderStyle="None" BorderWidth="0px" />
+            <RowStyle BorderStyle="None" />
+        </asp:GridView>    </ContentTemplate> 
+                <Triggers><asp:PostBackTrigger ControlID="cmdCreateGroup"  /></Triggers>
+
+            </asp:UpdatePanel>    </div>
+
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [GroupName] FROM [GroupDetails]"></asp:SqlDataSource>
         <div class="span5"></div>
         <div class="span3">
             <h3>Groups Feed</h3>
@@ -57,6 +109,8 @@
         </div>
         <div class="modal-body modal-body-big">
             <form class="form-horizontal">
+                                                <asp:UpdatePanel ID="UpdatePanel1" runat="server"><ContentTemplate>
+
                 <div class="control-group">
                     <asp:Label ID="Label1" runat="server" CssClass="control-label" Text="Group Name : "></asp:Label>
                     <div class="controls">
@@ -72,6 +126,7 @@
                         </div>
                     </asp:PlaceHolder>
                 </div>
+                                                    </ContentTemplate></asp:UpdatePanel>
             </form>
         </div>
 

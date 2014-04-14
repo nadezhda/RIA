@@ -89,11 +89,12 @@ Partial Class GroupsHome
                 '  tb.ID = "memebers" + countM.ToString
                 Dim ntb As String = "memebers" + countM.ToString
                 tb = MembersPlaceHolder.FindControl("members" + countM.ToString)
-                MsgBox(tb.Text)
+                '             MsgBox(tb.Text)
                 cmd.CommandText = "Insert into GroupMembers values ('" + tb.Text + "', " + tempid.ToString + ", 'M', 'P')"
                 cmd.ExecuteNonQuery()
                 countM = countM + 1
             Loop
+            GridView1.DataBind()
 
 
             conn.Close()
