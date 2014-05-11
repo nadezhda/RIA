@@ -45,7 +45,8 @@
                 </div>
             </div>-->
             <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Always"><ContentTemplate>
-        <asp:GridView ID="GridView1" ShowHeader="false" BorderStyle="None"  runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" Width="100%" BorderWidth="0px" AlternatingRowStyle-BorderStyle="None" EditRowStyle-BorderStyle="None" EmptyDataRowStyle-BorderStyle="None" GridLines="None">
+        <asp:GridView ID="GridView1" ShowHeader="False" BorderStyle="None"  runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" Width="100%" BorderWidth="0px" AlternatingRowStyle-BorderStyle="None" EditRowStyle-BorderStyle="None" EmptyDataRowStyle-BorderStyle="None" GridLines="None">
+            <AlternatingRowStyle BorderStyle="None" />
             <Columns>
                 <asp:TemplateField HeaderText="GroupName" SortExpression="GroupName">
                     <EditItemTemplate>
@@ -56,7 +57,8 @@
                 <div class="well span12">
                     <div class="row-fluid">
                         <div class="span9">
-                            <h4><asp:Label ID="Label1" runat="server" Text='<%# Bind("GroupName") %>'></asp:Label>
+                            <h4>
+                                <asp:LinkButton ID="LinkButton1" CommandName='<%# Bind("GroupId")%>' Text='<%# Bind("GroupName") %>' runat="server"></asp:LinkButton>
 </h4>
                         </div>
                         <div class="span3" style="margin-top: -18px">
@@ -88,16 +90,20 @@
                 </asp:TemplateField>
             </Columns>
             <EditRowStyle BorderStyle="None" BorderWidth="0px" />
+            <EmptyDataRowStyle BorderStyle="None" />
             <RowStyle BorderStyle="None" />
         </asp:GridView>    </ContentTemplate> 
                 <Triggers><asp:PostBackTrigger ControlID="cmdCreateGroup"  /></Triggers>
 
             </asp:UpdatePanel>    </div>
 
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [GroupName] FROM [GroupDetails]"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT GroupDetails.GroupName, GroupDetails.GroupId FROM GroupDetails INNER JOIN GroupMembers ON GroupDetails.GroupId = GroupMembers.GroupId WHERE (GroupMembers.StudentId = @StudentId)">
+            <SelectParameters>
+                <asp:SessionParameter Name="StudentId" SessionField="UserId" />
+            </SelectParameters>
+        </asp:SqlDataSource>
         <div class="span5"></div>
         <div class="span3">
-            <h3>Groups Feed</h3>
         </div>
     </div>
 

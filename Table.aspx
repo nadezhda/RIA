@@ -1,10 +1,33 @@
 ﻿<%@ Page Language="VB" Inherits="Table" MasterPageFile="~/Master.master" Title="Group Schedule" CodeFile="Table.aspx.vb" %>
 
+<%@ Register Assembly="DayPilot" Namespace="DayPilot.Web.Ui" TagPrefix="DayPilot" %>
+
+
+
 <asp:Content ID="contentHome" ContentPlaceHolderID="Main" runat="server">
+   
+    
     <div class="body">
         <h4>Select a time slot to create a meeting</h4>
-        <div class="table-responsive span10 offset1">
-            <table id="schedule" class="table">
+        <div class="table-responsive span5 offset1">
+             <div>
+                
+                <asp:SqlDataSource ID="SqlDataSource1"  runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [eventTable]"></asp:SqlDataSource>
+                
+                 <asp:HiddenField ID="HiddenField1" runat="server" />
+                 <script type="text/javascript">
+                     function SetValue() {
+                       
+
+                                 document.getElementById('<%=HiddenField1.ClientID%>').value = "test";
+                         $('#CreateMeetingModalBox').modal('toggle');
+                     }
+    </script>
+                <DayPilot:DayPilotCalendar ID="DayPilotCalendar2"    EventCorners="Rounded"  EventArrangement="Full"   HeightSpec="Fixed"  HeaderDateFormat="m"  cellDuration="60" ColumnWidthSpec="Fixed" ClientObjectName="dpm"  CellBorderColor="Green" CellHeight="50" EventHeaderHeight="50"   Days="5"  runat="server"  EventClickHandling="CallBack" TimeRangeSelectedHandling="JavaScript" OnEventAdd="DayPilotCalendar2_EventAdd" DurationBarVisible="false"  CrosshairOpacity="20" HeaderHeightAutoFit="True" HeaderHeight="50" ColumnWidth="50"  HideFreeCells="False" Crosshair="Header">
+                </DayPilot:DayPilotCalendar>
+
+            </div>
+       <!--     <table id="schedule" class="table">
                 <tr>
                     <th></th>
                     <th>7-8</th>
@@ -166,13 +189,49 @@
                     <td class="available" id="sun-22"></td>
                     <td class="available" id="sun-23"></td>
                 </tr>
-            </table>
+            </table> -->
+           
             <button id="btnCreatePlace" type="button" class="btn btn-success" runat="server" data-toggle="modal" data-target="#AddMeetingPlaceModal">
-                Add place
-            </button>
+                Add place</button>
+           <br /> <div><h4>Meeting Confirmation:</h4><p>Your Meeting Details:</p><p>Meeting Date: Tuesday, 13/05/2014</p><p>Meeting Time: 17:00 to 18:00</p><p>
+                             <button id="Button1" type="button" class="btn btn-success" runat="server" data-toggle="modal" data-target="#AddMeetingPlaceModal">Confirm and Send Email</button></p></div>
         </div>
+        <div class="table-responsive span5 offset1">   <asp:Panel runat="server" ID="LocationPanel" Visible="false"> <form class="form-horizontal">
+                    <div class="filter">
+                        <div class="control-group">
+                            <label class="control-label checkbox">
+                                <input type="checkbox" />
+                                Sort By Closest Location
+                            </label>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Campus : </label>
+                            <div class="controls">
+                                <select>
+                                    <option>Highfield </option>
+                                    <option>Avenue </option>
+                                    <option>National Oceanography Centre </option>
 
-        <div id="AddMeetingPlaceModal" class="modal hide fade" tabindex="-1">
+                                </select>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    02a / 2077 (L/T J), Building 2 Annexe<br />
+                    27 / 2003 (L/R 2), Chemistry<br />
+                    27/1133 (w/c 1 July - w/e 18 Aug) then 58/1039 (w/c 19 Aug - w/e 15 Sep), Chemistry<br />
+                    Seminar Room, Chemistry<br />
+                    Boardroom, Chemistry<br />
+                    Lecture Theatre 1, Chemistry<br />
+                    Lecture Theatre, David Kiddle<br />
+                    Lecture Theatre, David Kiddle<br />
+                    Lecture Theatre, EEE Building<br />
+                    32 / 3077, EEE Building<br />
+             <asp:Button ID="cmdCreateMeeting" runat="server" Text="Create Meeting" />   
+                </form></asp:Panel></div>
+               <div id="AddMeetingPlaceModal" class="modal hide fade" tabindex="-1">
             <div class="modal-header">
                 <h3>Add Meeting Place</h3>
             </div>
@@ -212,10 +271,26 @@
                     32 / 3077, EEE Building<br />
                 </form>
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer" >
                 <asp:Button ID="Button2" CssClass="btn btn-success" runat="server" Text="Save Settings" />
                 <button id="Button3" data-dismiss="modal" class="btn ">Close</button>
             </div>
         </div>
+
+           <div id="CreateMeetingModalBox" class="modal hide fade" tabindex="-1">
+            <div class="modal-header">
+                <h3>Create Meeting</h3>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <script>start.tostring()</script>>
+                    <p>You Selected The Meeting Time. Now Press <b>Create Meeting</b> To Send It To Group Members.</p> 
+                </form>
+            </div>
+            <div class="modal-footer">
+                   
+                <button id="Button4" data-dismiss="modal" class="btn ">Close</button>
+            </div>
+        </div>
     </div>
-</asp:Content>
+    </asp:Content>
