@@ -8,6 +8,7 @@ Imports System.Net.Mail
 Imports System.Net
 Imports System.Drawing
 Imports System.Data.SqlClient
+Imports System.Data
 
 
 Partial Public Class [Table]
@@ -42,6 +43,51 @@ Partial Public Class [Table]
 
 
     End Sub
+    Protected Sub getScheduledEvents()
+        Dim conn As SqlConnection
+        Dim cmd As SqlCommand
+
+        Try
+            'Define new connection and open it
+            conn = New SqlConnection(ConfigurationManager.ConnectionStrings("ConnectionString").ConnectionString)
+            conn.Open()
+            'define the sqlcommand ro select the password of the username and the connection
+            cmd = New SqlCommand("SELECT eventName, startEvent, endEvent, weekNumber, dayName, GroupId FROM eventTable WHERE (GroupId =" + CInt(Session("groupId")).ToString + ") AND (weekNumber= " + CInt(Session("weekNumber")).ToString + ")", conn)
+            'Return the first row, since username is primary key
+            Dim groupReader As SqlDataReader = cmd.ExecuteReader()
+
+
+            Do While groupReader.Read
+
+                Dim i As Integer = 0
+
+                Do While i < StudentGroupArray.Count
+                    Dim objEventDataRow As System.Data.DataRow = objDataTable.NewRow
+
+                    objEventDataRow("eventName") = "ScheduledMeeting"
+                    objEventDataRow("dayName") = groupReader(4)
+                    objEventDataRow("studentId") = StudentGroupArray.Item(i)
+                    objEventDataRow("weekNumber") = Session("weekNumber")
+                    objEventDataRow("startEvent") = groupReader(1)
+                    objEventDataRow("endEvent") = groupReader(2)
+                    objDataTable.Rows.Add(objEventDataRow)
+                    i = i + 1
+                Loop
+            Loop
+            conn.Close()
+            '   Session("GroupStudents") = StudentGroupArray
+
+
+            conn.Close()
+
+
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+
+
+
+    End Sub
 
 
     Protected Sub getGroupsSubscribedTo()
@@ -65,10 +111,10 @@ Partial Public Class [Table]
             Loop
             conn.Close()
             '   Session("GroupStudents") = StudentGroupArray
-          
+
 
             conn.Close()
-         
+
 
         Catch ex As Exception
             MsgBox(ex.ToString)
@@ -128,7 +174,7 @@ Partial Public Class [Table]
             Do While hourCounter < 9
 
                 selectStr = "startEvent <= #" + tempStartDate + "# and endEvent > #" + tempStartDate + "# and ( " + StudentsStr
-                Dim result() As System.Data.DataRow = objDataTable.Select(selectStr) 'Dont Forget to add and studentId
+                Dim result() As DataRow = objDataTable.Select(selectStr) 'Dont Forget to add and studentId
 
                 Dim freeTimeDataRow As System.Data.DataRow = freeTimeDataTable.NewRow
 
@@ -138,18 +184,26 @@ Partial Public Class [Table]
                 freeTimeDataRow("eventEnd") = tempStartDate.AddHours(1)
 
                 If result.Length > 0 Then
+                    '    MsgBox(result(0).Item(1).ToString)
+                    'If result(0).Item(1).ToString = "ScheduledMeeting" Then
+                    '    MsgBox("Yes")
+                    '    freeTimeDataRow("eventStatus") = "Scheduled"
+
+                    'Else
                     freeTimeDataRow("eventStatus") = "Busy"
+
+                    ' End If
                 Else
-                    If freeTimeDataRow("eventStatus") <> "Busy" Then
-                        freeTimeDataRow("eventStatus") = "Free"
-                    End If
+                If freeTimeDataRow("eventStatus") <> "Busy" And freeTimeDataRow("eventStatus") <> "Scheduled" Then
+                    freeTimeDataRow("eventStatus") = "Free"
+                End If
 
                 End If
 
-                freeTimeDataTable.Rows.Add(freeTimeDataRow)
+                    freeTimeDataTable.Rows.Add(freeTimeDataRow)
 
-                tempStartDate = tempStartDate.AddHours(1)
-                hourCounter = hourCounter + 1
+                    tempStartDate = tempStartDate.AddHours(1)
+                    hourCounter = hourCounter + 1
             Loop
             tempStartDate = tempStartDate.AddHours(15)
             hourCounter = 0
@@ -167,7 +221,9 @@ Partial Public Class [Table]
         DayPilotCalendar2.HideFreeCells = True
         DayPilotCalendar2.DataBind()
 
-      
+        GridView2.DataSource = freeTimeDataTable
+        GridView2.DataBind()
+
 
 
     End Sub
@@ -249,8 +305,12 @@ Partial Public Class [Table]
             End If
         Loop
 
-     
         freetimes()
+
+        '  getScheduledEvents()
+        GridView1.DataSource = objDataTable
+        GridView1.DataBind()
+       
     End Sub
 
 
@@ -260,6 +320,16 @@ Partial Public Class [Table]
         If Session("Role") Is Nothing Then
             Response.Redirect("Login.aspx")
         Else
+            Page.ClientScript.RegisterClientScriptInclude("jquery-1.8.0.min", "js/jquery-1.8.0.min.js")
+
+            Page.ClientScript.RegisterClientScriptInclude("jquery.csv-0.71", "js/jquery.csv-0.71.js")
+
+            Page.ClientScript.RegisterClientScriptInclude("kdTree", "js/kdTree.js")
+
+            Page.ClientScript.RegisterClientScriptInclude("meetingPlace", "js/meetingPlace.js")
+
+
+
             StudentGroupArray.Clear()
             getGroupsSubscribedTo()
             DayPilotCalendar2.BusinessBeginsHour = "9"
@@ -282,10 +352,13 @@ Partial Public Class [Table]
             e.BorderColor = "#5DD687"
             ' e.Html = "<div style='height:43px'></div>"
 
-        Else
+        ElseIf colorDetermin = "Busy" Then
             e.BackgroundColor = "#E2E2DD"
             e.BorderColor = "#E2E2DD"
             '  e.Html = "<div style='height:43px'></div>"
+        Else
+            e.BackgroundColor = "#000000"
+            e.BorderColor = "#000000"
 
         End If
     End Sub
@@ -298,22 +371,20 @@ Partial Public Class [Table]
     End Sub
 
     Protected Sub SaveMeeting(ByVal SD As Date, ByVal ED As Date)
-        Dim findPassword As String = Nothing
         Dim conn As SqlConnection
-        Dim cmdStr As String
+        Dim cmdStrSaveMeeting As String
         Dim cmd As SqlCommand
 
         Try
             'Define new connection and open it
             conn = New SqlConnection(ConfigurationManager.ConnectionStrings("ConnectionString").ConnectionString)
             conn.Open()
-
-            cmdStr = "Insert into eventTable values ('meeting', " + SD + ", " + ED + ", " + CInt(Session("weekNumber")) + ", '" + SelectedDay + "', " + CInt(Session("groupId")) + ")"
-            cmd = New SqlCommand(cmdStr, conn)
-
+            cmdStrSaveMeeting = "Insert into eventTable(eventName, startEvent, endEvent, weekNumber, dayName, GroupId) values ('meeting', '" + SD + "', '" + ED + "', " + CInt(Session("weekNumber")).ToString + ", '" + SelectedDay.ToString + "', " + CInt(Session("groupId")).ToString + ")"
+            cmd = New SqlCommand(cmdStrSaveMeeting, conn)
+            MsgBox(cmdStrSaveMeeting)
             cmd.ExecuteNonQuery()
 
-
+            MsgBox("success")
 
 
             conn.Close()
@@ -328,7 +399,7 @@ Partial Public Class [Table]
         SelectedEnd = e.End.ToShortTimeString
         SelectedDate = e.Start.ToShortDateString
         SelectedDay = e.Start.DayOfWeek.ToString
-        '   SaveMeeting(e.Start, e.End)
+        SaveMeeting(e.Start, e.End)
         sendEmail()
         MsgBox("email was sent")
 
@@ -349,6 +420,6 @@ Partial Public Class [Table]
 
     End Sub
 
-   
+
 End Class
 
