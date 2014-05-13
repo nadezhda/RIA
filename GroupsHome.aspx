@@ -14,37 +14,8 @@
                 </button>
 
             </div> 
-    <!--         <div class="row-fluid">
-                <div class="well span12">
-                    <div class="row-fluid">
-                        <div class="span9">
-                            <h4><i class="fa fa-users fa-lg"></i>Social Networks </h4>
-                        </div>
-                        <div class="span3" style="margin-top: -18px;">
-                            <a id="btnSettings" class="btn pull-right btn-primary" data-toggle="modal" rel="tooltip" data-target="#groupSettingModal" data-original-title="Group Settings"><i class="fa fa-cogs fa-lg"></i></a>
-                            <a id="btnAddMeeting" href="Table.aspx" class="btn pull-right btn-warning" data-toggle="tooltip" data-original-title="Add Meeting"><i class="fa fa-calendar fa-lg"></i></a>
-                        </div>
-                    </div>
-                    <div class="row-fluid">
-                        <div class="">
-                            <div class="btn meeting-confirm btn-success btn-large span11">
-                                <label class="pull-left">Wednesday 11:00 AM </label>
-                                <label class="pull-right">Confirmed<i class="fa fa-check-circle fa-lg"></i></label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row-fluid">
-                        <div class="">
-                            <div class="btn meeting-conflict btn-danger btn-large span11">
-                                <label class="pull-left">Friday 15:00 PM </label>
-                                <label class="pull-right">Conflict <i class="fa fa-exclamation-circle fa-lg"></i></label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>-->
             <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Always"><ContentTemplate>
+
         <asp:GridView ID="GridView1" ShowHeader="False" BorderStyle="None"  runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" Width="100%" BorderWidth="0px" AlternatingRowStyle-BorderStyle="None" EditRowStyle-BorderStyle="None" EmptyDataRowStyle-BorderStyle="None" GridLines="None">
             <AlternatingRowStyle BorderStyle="None" />
             <Columns>
@@ -69,6 +40,7 @@
                     <div class="row-fluid">
                         <div class="">
                             <div class="btn meeting-confirm btn-success btn-large span11">
+
                                 <label class="pull-left">Wednesday 11:00 AM </label>
                                 <label class="pull-right">Confirmed<i class="fa fa-check-circle fa-lg"></i></label>
                             </div>
@@ -102,7 +74,11 @@
                 <asp:SessionParameter Name="StudentId" SessionField="UserId" />
             </SelectParameters>
         </asp:SqlDataSource>
-        <div class="span5"></div>
+        <div class="span5">
+
+        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT eventTable.eventName, eventTable.startEvent, eventTable.endEvent FROM GroupDetails INNER JOIN eventTable ON GroupDetails.GroupId = eventTable.GroupId">
+        </asp:SqlDataSource>
+        </div>
         <div class="span3">
         </div>
     </div>

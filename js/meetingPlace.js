@@ -41,7 +41,25 @@ $(document).ready(function(){
 		// last buildings of each memebers of the group
 		var Buildings = ["1416","29","46"];
 		var campusName = "Highfield Campus";
-		// var campusName = "Oceanography Centre Campus";
+		//var hiddenDataString = ($("#building_hf").attr("value"));
+		//var Buildings = hiddenDataString.split(",");
+		//var toCheckCampus = "";
+
+		//var getCampusName = function () {
+		//    for (var i in bldData) {
+		//        for (j in Buildings) {
+		//            if (bldData[i].number == Buildings[j]) {
+		//                if (toCheckCampus == bldData[i].site_name) {
+		//                    continue;
+		//                }
+		//                toCheckCampus = bldData[i].site_name;
+		//            }
+		//        }
+		//    }
+		//    return toCheckCampus;
+		//}
+		//campusName = getCampusName();
+	    // console.log(campusName);
 		//----------------------------------------------
 
 		// calculate nearest neibor buildings
